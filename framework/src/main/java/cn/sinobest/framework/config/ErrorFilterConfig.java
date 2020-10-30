@@ -1,7 +1,6 @@
-package cn.sinobest.subsysb.config;
+package cn.sinobest.framework.config;
 
-import cn.sinobest.sso.filter.LoginFilter;
-import cn.sinobest.sso.filter.LogoutFilter;
+import cn.sinobest.framework.filter.ErrorPageInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -16,15 +15,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @Version 1.0
  */
 @Configuration
-public class WebMvcConfig extends WebMvcConfigurerAdapter {
+public class ErrorFilterConfig extends WebMvcConfigurerAdapter {
 
     /** 登录拦截器 */
     @Autowired
-    LoginFilter loginFilter;
-
-    /** 退出拦截器 */
-    @Autowired
-    LogoutFilter logoutFilter;
+    ErrorPageInterceptor errorPageInterceptor;
 
     /**
      * @param ：@param registry
@@ -35,8 +30,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginFilter).addPathPatterns("/*").excludePathPatterns("/logout");  // 拦截所有
-        registry.addInterceptor(logoutFilter).addPathPatterns("/logout");  // 拦截logout
+        registry.addInterceptor(errorPageInterceptor).addPathPatterns("/error");  // 拦截spring的error
         super.addInterceptors(registry);
     }
 

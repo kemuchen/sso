@@ -12,7 +12,7 @@ public class TestController {
 	public String test(HttpServletRequest request, Model model) {
 		return "test";
 	}
-	@RequestMapping("/success")
+	@RequestMapping("/subsysb")
 	public String success(HttpServletRequest request, Model model) {
 		return "success";
 	}

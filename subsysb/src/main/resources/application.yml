@@ -6,7 +6,7 @@ spring:
     name: subsysb
   mvc:
     view:
-      prefix: /view/flt/
+      prefix: /templates/
       suffix: .flt
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,14 +14,14 @@ spring:
     username: root
     password: kl931106
   main:
-    allow-bean-definition-overriding: true #µ±Óöµ½Í¬ÑùÃû×ÖµÄÊ±ºò£¬ÊÇ·ñÔÊĞí¸²¸Ç×¢²á
+    allow-bean-definition-overriding: true #å½“é‡åˆ°åŒæ ·åå­—çš„æ—¶å€™ï¼Œæ˜¯å¦å…è®¸è¦†ç›–æ³¨å†Œ
   resources:
-    static-locations: classpath:/view/ftl
+    static-locations: classpath:/templates/
 
 eureka:
   client:
     service-url:
-      #defaultZone Õâ¸öÊÇ²»»áÌáÊ¾µÄ£¬´Ë´¦ĞèÒª×Ô¼ºĞ´
-      #Êµ¼ÊÉÏÊôĞÔÓ¦¸ÃÊÇservice-url,Õâ¸öÊôĞÔÊÇ¸ömap£¨key-value£©¸ñÊ½£»µ±keyÊÇdefaultZoneµÄÊ±ºò²ÅÄÜ±»½âÎö£»ËùÒÔÕâÀïÃ»ÓĞÌáÊ¾£¬
-      #µ«ÊÇ×Ô¼º»¹ĞèÒªĞ´Ò»¸ödefaultZone£»
+      #defaultZone è¿™ä¸ªæ˜¯ä¸ä¼šæç¤ºçš„ï¼Œæ­¤å¤„éœ€è¦è‡ªå·±å†™
+      #å®é™…ä¸Šå±æ€§åº”è¯¥æ˜¯service-url,è¿™ä¸ªå±æ€§æ˜¯ä¸ªmapï¼ˆkey-valueï¼‰æ ¼å¼ï¼›å½“keyæ˜¯defaultZoneçš„æ—¶å€™æ‰èƒ½è¢«è§£æï¼›æ‰€ä»¥è¿™é‡Œæ²¡æœ‰æç¤ºï¼Œ
+      #ä½†æ˜¯è‡ªå·±è¿˜éœ€è¦å†™ä¸€ä¸ªdefaultZoneï¼›
       defaultZone: http://localhost:5060/eureka/eureka

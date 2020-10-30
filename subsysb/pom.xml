@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>cn.sinobest</groupId>
-            <artifactId>sso-client</artifactId>
+            <artifactId>sso</artifactId>
             <version>${parent.version}</version>
         </dependency>
     </dependencies>

@@ -1,7 +1,7 @@
 package cn.sinobest.subsysa.config;
 
-import cn.sinobest.ssoclient.filter.LoginFilter;
-import cn.sinobest.ssoclient.filter.LogoutFilter;
+import cn.sinobest.sso.filter.LoginFilter;
+import cn.sinobest.sso.filter.LogoutFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -35,9 +35,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginFilter).addPathPatterns("/**").
-                excludePathPatterns("/login").excludePathPatterns("/eureka").excludePathPatterns("/sso");  // 拦截所有
-        registry.addInterceptor(logoutFilter).addPathPatterns("/**").excludePathPatterns("/");  // 拦截所有
+        registry.addInterceptor(loginFilter).addPathPatterns("/*").excludePathPatterns("/logout");  // 拦截所有
+        registry.addInterceptor(logoutFilter).addPathPatterns("/logout");  // 拦截logout
         super.addInterceptors(registry);
     }
 
@@ -50,11 +49,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
         super.addResourceHandlers(registry);
     }
 }

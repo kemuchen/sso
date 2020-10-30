@@ -1,13 +1,13 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   application:
-    name: subsysa
+    name: sso
   mvc:
     view:
       prefix: /templates/
-      suffix: .flt
+      suffix: .ftl
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/framework?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
@@ -25,3 +25,6 @@ eureka:
       #实际上属性应该是service-url,这个属性是个map（key-value）格式；当key是defaultZone的时候才能被解析；所以这里没有提示，
       #但是自己还需要写一个defaultZone；
       defaultZone: http://localhost:5060/eureka/eureka
+
+mybatis:
+  mapper-locations: classpath:/cn/sinobest/**/**/*.xml

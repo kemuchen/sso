@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sinobest.sso.dao.generator.repository.SysUserMapper">
+  <resultMap id="BaseResultMap" type="cn.sinobest.sso.dao.generator.entity.SysUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="loginid" jdbcType="VARCHAR" property="loginid" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="avator" jdbcType="VARCHAR" property="avator" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="login_fail_count" jdbcType="INTEGER" property="loginFailCount" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="valid" jdbcType="VARCHAR" property="valid" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_user" jdbcType="INTEGER" property="modifyUser" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.sinobest.sso.dao.generator.entity.SysUser">
+    insert into sys_user (id, username, loginid, 
+      password, phone, user_type, 
+      email, avator, status, 
+      login_fail_count, last_login_time, valid, 
+      create_user, create_time, modify_user, 
+      modify_time, memo)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{loginid,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{avator,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{loginFailCount,jdbcType=INTEGER}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{valid,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyUser,jdbcType=INTEGER}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{memo,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.sinobest.sso.dao.generator.entity.SysUser">
+    update sys_user
+    set username = #{username,jdbcType=VARCHAR},
+      loginid = #{loginid,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      avator = #{avator,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      login_fail_count = #{loginFailCount,jdbcType=INTEGER},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      valid = #{valid,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user = #{modifyUser,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      memo = #{memo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, username, loginid, password, phone, user_type, email, avator, status, 
+    login_fail_count, last_login_time, valid, create_user, create_time, modify_user, 
+    modify_time, memo
+    from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, username, loginid, password, phone, user_type, email, avator, status, 
+    login_fail_count, last_login_time, valid, create_user, create_time, modify_user, 
+    modify_time, memo
+    from sys_user
+  </select>
+</mapper>
